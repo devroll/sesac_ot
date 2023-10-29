@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            button{
+                width  : 70px;
+                height : 50px;
+                margin : 5px; 
+            }
+            #result {
+                width : 320px;  /* 280 + 30 */
+                height : 50px;
+                margin : 5px;
+                text-align : right;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input readonly type='number' id='result' value="0">
+        </div>
+        <div>
+            <button onclick = "funcOp('+')" id = 'op_plus'>+</button>
+            <button onclick = "funcOp('-')" id = 'op_sub'>-</button>
+            <button onclick = "funcOp('*')" id = 'op_mul'>*</button>
+            <button onclick = "funcOp('/')" id = 'op_div'>/</button>
+        </div>
+        <div>
+            <button onclick = "funcCal('7')" id = 'n8'>7</button>
+            <button onclick = "funcCal('8')" id = 'n7'>8</button>
+            <button onclick = "funcCal('9')" id = 'n9'>9</button>
+            <button onclick = "funcResult()" id = 'op_equal'>=</button>
+        </div>       
+        <div>
+            <button onclick = "funcCal('4')" id = 'n4'>4</button>
+            <button onclick = "funcCal('5')" id = 'n5'>5</button>
+            <button onclick = "funcCal('6')" id = 'n6'>6</button>
+            <button onclick = "funcClear()" id = 'op_clr'>c</button>
+        </div> 
+        <div>
+            <button onclick = "funcCal('1')" id = 'n1'>1</button>
+            <button onclick = "funcCal('2')" id = 'n2'>2</button>
+            <button onclick = "funcCal('3')" id = 'n3'>3</button>
+            <button onclick = "funcCal('0')" id = 'n0'>0</button>
+        </div>
+        <script>
+            let numA = '';
+            let numB = '';
+            let operator = null;            
+            let inputResult = document.querySelector('#result');
+
+            function funcCal (n) {
+                console.log('숫자 눌렀음');
+                if( operator == null ) {
+                    numA += n;
+                    inputResult.value = numA;
+                } else {
+                    numB += n;
+                    inputResult.value = numB;
+                }
+            }
+            function funcOp (op) {
+                console.log('수식에 ' + op + ' 가 입력되었음');
+                operator = op;
+            }
+            function funcResult () {
+                if(operator == '+' ){                    
+                    inputResult.value = parseInt(numA) + parseInt(numB);
+                }else if(operator == '-') {
+                    inputResult.value = parseInt(numA) - parseInt(numB);
+                }else if(operator == '*') {
+                    inputResult.value = parseInt(numA) * parseInt(numB);
+                }else if(operator == '/') {
+                    inputResult.value = parseInt(numA) / parseInt(numB);
+                }
+                fucnInitialize();
+            }
+            function funcClear () {                
+                inputResult.value = 0;
+                fucnInitialize();
+            }
+            function fucnInitialize() {
+                numA = '';
+                numB = '';
+                operator = null;
+            }
+        </script>
+    </body>
+</html>
