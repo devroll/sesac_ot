@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+<!-- https://htmlpreview.github.io/? 깃허브 브라우저 -->
+
 <html>
-    <head>
+    <head>        
         <style>
             button{
                 width  : 70px;
@@ -17,7 +19,7 @@
     </head>
     <body>
         <div>
-            <input readonly type='number' id='result' value="0">
+            <input readonly type='number' id='result' value=0>
         </div>
         <div>
             <button onclick = "funcOp('+')" id = 'op_plus'>+</button>
@@ -50,11 +52,16 @@
             let inputResult = document.querySelector('#result');
 
             function funcCal (n) {
+                // console.log("inputResult.value는 " + inputResult.value + "이다");
+                if(inputResult.value == 0 && n == 0) {
+                    console.log('예외처리');
+                    return;
+                }
                 console.log('숫자 눌렀음');
-                if( operator == null ) {
-                    numA += n;
+                if(operator == null) {
+                    numA += n;                    
                     inputResult.value = numA;
-                } else {
+                } else if (operator != null) {
                     numB += n;
                     inputResult.value = numB;
                 }
