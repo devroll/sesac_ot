@@ -30,7 +30,9 @@
 // }
 
 // while(조건문){
-// }
+// } 
+// 테스트
+
 let n = 0;
 while(n < 10) {
     console.log(n);
