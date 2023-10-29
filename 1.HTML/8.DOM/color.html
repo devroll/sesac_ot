@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p id="myText">이 곳에 글자를 입력하시오</p>
+        <button onclick="changeRedColor()">RED색상</button>
+        <button onclick="changeBlueColor()">BLUE색상</button>
+        <button onclick="changeColor()">색상토글</button>
+        <button onclick="addElement()">내용 추가</button>
+        <button onclick="removeElement()">내용 삭제</button>
+        <button onclick="myfunc()">내 버튼</button>
+        <script>
+            function myfunc() {
+                // print();
+                // window.close();
+                console.log(window.innerWidth, window.innerHeight);
+                console.log(screen.width, screen.height);
+                window.history.back();
+            }
+            function addElement() {
+                var div = document.createElement("div");
+                div.textContent = "새로운 내용";
+                document.body.appendChild(div);
+            }
+            function removeElement() {
+                var textElement = document.querySelector("div");
+                textElemt.remove(textElement);
+            }
+            function changeRedColor() {
+                var textElement = document.getElementById("myText");
+                textElement.style.color = "red";
+            }
+            // 미션1. BLUE 색상 버튼 동작 완성
+            function changeBlueColor() {
+                var textElement = document.getElementById("myText");
+                textElement.style.color = "blue";
+            }
+            // 미션2. 버튼 하나로 RED/BLUE 토글
+            function changeColor() {
+                var textElement = document.getElementById("myText");
+                var currentColor = textElement.style.color;
+                // console.log(currentColor); 
+                if (currentColor === "red" || currentColor === "") {
+                    textElement.style.color = "blue";
+                } else if(currentColor === "blue") {
+                    textElement.style.color = "red";
+                }
+            }            
+        </script>
+    </body>
+</html>
