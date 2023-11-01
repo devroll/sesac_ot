@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style> 
+        /* css 셀렉터를 통해서 원하는 클래스와 원하는 태그를 찾아서 속성 적용 */
+            .calculator{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 10px;
+                max-width : 300px;
+                max-height : 500px;
+                margin: auto;
+                text-align: center;
+            }
+            .calculator input{
+                grid-column: span 4;
+                padding: 15px;
+                font-size: 20px;
+            }
+            .calculator button{
+                padding: 5px;
+                font-size: 24px;                
+            }
+        </style>
+    </head>
+    <body>
+    <div class="calculator">
+        <input readonly type = 'text' id = 'result'>
+        <button onclick="document.getElementById('result').value += this.innerText">+</button>
+        <button onclick="document.getElementById('result').value += this.innerText">-</button>
+        <button onclick="document.getElementById('result').value += this.innerText">*</button>
+        <button onclick="document.getElementById('result').value += this.innerText">/</button>
+        <button onclick="document.getElementById('result').value += this.innerText">7</button>
+        <button onclick="document.getElementById('result').value += this.innerText">8</button>
+        <button onclick="document.getElementById('result').value += this.innerText">9</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="document.getElementById('result').value += this.innerText">4</button>
+        <button onclick="document.getElementById('result').value += this.innerText">5</button>
+        <button onclick="document.getElementById('result').value += this.innerText">6</button>
+        <button onclick = "clearResult()">c</button>
+        <button onclick="document.getElementById('result').value += this.innerText">1</button>
+        <button onclick="document.getElementById('result').value += this.innerText">2</button>
+        <button onclick="document.getElementById('result').value += this.innerText">3</button>
+        <button onclick="document.getElementById('result').value += this.innerText">0</button>
+    </div>
+    </body>
+    <script>
+        function calculate() {
+            inputText = document.getElementById('result').value;
+            resultValue = eval(inputText);
+            console.log(resultValue);
+            // 한줄 코드를 통해서, 최종값을 다시 내가 원하는 result 필드에 기록하기 
+            // 1. 내가 원하는 필드(result)라는 필드를 선택한다.
+            document.getElementById('result').value = resultValue;
+            // console.log(document.getElementById('result').value);
+            // 2. 연산한 값(result)을 할당한다.
+        }
+        function clearResult() {
+            document.getElementById('result').value = "";
+        }
+    </script>
+</html>

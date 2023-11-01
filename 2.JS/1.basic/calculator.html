@@ -2,7 +2,7 @@
 <!-- https://htmlpreview.github.io/? 깃허브 브라우저 -->
 
 <html>
-    <head>        
+    <head>
         <style>
             button{
                 width  : 70px;
@@ -38,7 +38,7 @@
             <button onclick = "funcCal('5')" id = 'n5'>5</button>
             <button onclick = "funcCal('6')" id = 'n6'>6</button>
             <button onclick = "funcClear()" id = 'op_clr'>c</button>
-        </div> 
+        </div>
         <div>
             <button onclick = "funcCal('1')" id = 'n1'>1</button>
             <button onclick = "funcCal('2')" id = 'n2'>2</button>
@@ -48,7 +48,7 @@
         <script>
             let numA = '';
             let numB = '';
-            let operator = null;            
+            let operator = null;          
             let inputResult = document.querySelector('#result');
 
             function funcCal (n) {
@@ -80,13 +80,13 @@
                 }else if(operator == '/') {
                     inputResult.value = parseInt(numA) / parseInt(numB);
                 }
-                fucnInitialize();
+                funcInitialize();
             }
             function funcClear () {                
                 inputResult.value = 0;
-                fucnInitialize();
+                funcInitialize();
             }
-            function fucnInitialize() {
+            function funcInitialize() {
                 numA = '';
                 numB = '';
                 operator = null;
