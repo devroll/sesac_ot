@@ -2,7 +2,8 @@ const fs = require('fs');
 
 // 파일 읽기
 // 콜백함수?
-fs.readFile('example.txt', 'utf8', (err, data) => {
+// arrow function - 함수명 없앰 
+fs.readFile('example2.txt', 'utf8', (err, data) => {
     if(err){
         console.log("파일을 읽는데 오류가 발생했습니다.")
         return;
@@ -34,7 +35,7 @@ fs.writeFile('newFile10.txt', content, 'utf8', (err) => {
 });
 
 // 파일 복사
-// fs.copyFileSync
+// fs.copyFileSync 
 fs.copyFile('newFile.txt', 'newFile2.txt', (err) => {
     if(err){
         console.error("파일 복사중 오류가 발생했습니다.", err);
@@ -42,3 +43,5 @@ fs.copyFile('newFile.txt', 'newFile2.txt', (err) => {
     }
     console.log("파일이 성공적으로 복사되었습니다.");
 });
+
+// 비동기로 처리되기 때문에 위 함수들의 실행결과가 나오는 순서가 바뀔수 있다. 

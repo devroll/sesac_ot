@@ -1,8 +1,9 @@
 class Person {
+    // constructor는 필요할때만 넣는다
     constructor(name, age, gender)  {
         this.name = name;
         this.age = age;
-        this.gender =gender;
+        this.gender = gender;
     }
     greet(){
         console.log(`안녕, 나는 ${this.name}이고, ${this.age}살이야`)
