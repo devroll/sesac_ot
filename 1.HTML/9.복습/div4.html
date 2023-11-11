@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+           /* 미션. 각각의 div를 선택해서 100x100dmfh 색상 적용 */
+           div {
+                width: 100px;
+                height: 100px;
+                color: white;
+                position:relative
+           }
+           .div1 {
+                background-color: orange;
+                z-index: 5;
+            }
+            .div2 {
+                background-color: red;
+                bottom: 50px;
+                z-index: 4;
+            }
+            .div3 {
+                background-color: blue;
+                bottom: 100px;
+                z-index: 3;
+            }
+            .div4 {
+                background-color: yellow;
+                bottom: 150px;
+                z-index: 2;
+           }
+        </style>
+    </head>
+    <body>
+        <h1>z-index를 통한 레이어 순서 변경</h1>
+        <div class="div1">ORANGE</div>
+        <div class="div2">RED</div>
+        <div class="div3">BLUE</div>
+        <div class="div4">YELLOW</div>
+    </body>
+</html> 

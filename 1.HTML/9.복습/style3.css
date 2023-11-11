@@ -1,0 +1,32 @@
+/* <style> */
+h1, h2 {
+   text-align:center;
+   color:red; 
+}
+h2{
+    color:blue;
+}
+#calendar{
+    width: 100%;
+    margin-top: 20px;
+    /* border: 1px solid #ccc; */
+}
+/* calendar의 하위태그 th */
+#calendar th {
+    padding: 10px;
+    background-color: rgb(102, 110, 215);
+    color: white;
+    width: 14%;
+}
+#calendar th:first-child, td:first-child {
+    color: #ff0000;
+}
+#calendar th:last-child, td:last-child {
+    color: #0000ff;
+}
+#calendar td {
+    padding: 5px;
+    text-align: center;
+    border: 2px solid #b6ef0d;
+}
+/* </style> */

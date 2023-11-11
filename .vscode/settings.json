@@ -1,3 +1,11 @@
 {
-    "typescript.locale": "ko"
+  "typescript.locale": "ko",
+  "cSpell.words": [
+    "jsminiproject",
+    "orderitem",
+    "STOREID",
+    "Totwo",
+    "USERID",
+    "uuidv"
+  ]
 }
