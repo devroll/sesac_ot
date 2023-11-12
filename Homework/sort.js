@@ -3,17 +3,17 @@
 
 const numbers = [ 4, 2, 7, 1, 9, 5, 3, 6, 8 ]
 
-function sort(nums) {
-    for(let i = 0 ; i < nums.length ; i++){
-        for(let j = i+1 ; j < nums.length ; j++){
-            if(nums[i] > nums[j]){
-                temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
+function sort(numbers) {
+    for(let i = 0 ; i < numbers.length ; i++){
+        for(let j = i+1 ; j < numbers.length ; j++){
+            if(numbers[i] > numbers[j]){
+                temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
             }
         }
     }
-    return nums;
+    return numbers;
 }
 
 numsSort = sort(numbers); 
