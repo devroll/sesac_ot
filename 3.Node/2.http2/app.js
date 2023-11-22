@@ -1,15 +1,11 @@
 const http = require('http');
 const fs = require('fs').promises;
 const path = require('path');
-
 // const querystring = require('querystring');
 // const parse = querystring.parse;
-
 // const parse = require('querystring').parse;
-
 // 객체 디스트럭처링(de-structuring)
 // const { parse } = require('querystring');
-
 // const { url } = require('inspector');
 
 const SUCCESS = 200;
@@ -30,12 +26,13 @@ const server = http.createServer(async (req, res) => {
             // const fileName = parsedUrl.pathname;
             // const filePath = `./images/${fileName}`;
             // const data = await fs.readFile(filePath);
-
             // const data = await fs.readFile('.' + req.url);
             // res.writeHead(SUCCESS, { 'Content-Type': 'image/jpg' });
             // res.end(data);
             const filePath = "." + req.url;
+            console.log('filePath: ', filePath);
             const data = await fs.readFile(filePath);
+            const contentType = getContentType(filePath);
             res.writeHead(200, { 'Content-Type': contentType });
             return res.end(data);
         }
@@ -49,8 +46,8 @@ const server = http.createServer(async (req, res) => {
                 const data = await fs.readFile('./about.html');
                 res.writeHead(SUCCESS, { 'Content-Type': 'text/html; charset=utf-8' });
                 res.end(data);
-            } else if (req.url === '/users') {
-                console.log("users에 왔음");
+            } else if (req.url === '/user') {
+                console.log("user에 왔음");
                 // const data = await fs.readFile('./users.html');
                 res.writeHead(SUCCESS, { 'Content-Type': 'text/plain; charset=utf-8' });
                 console.log(JSON.stringify(users));
@@ -61,9 +58,9 @@ const server = http.createServer(async (req, res) => {
                 //     res.end(data);
             } else {
                 // 정규표현식
-                const imageMatch = req.url.match(/^\/images\/(.+)$/);
+                const imageMatch = req.url.match(/^\/image\/(.+)$/);
                 if (imageMatch) {
-                    const imageName = imageMath[1];
+                    const imageName = imageMatch[1];
                     const imagePath = './static/' + imageName;
                     try {
                         // const filePath = res.url;
@@ -82,7 +79,7 @@ const server = http.createServer(async (req, res) => {
                 }
             }
         } else if (req.method === 'POST') {
-            if (req.url === '/users') {
+            if (req.url === '/user') {
                 // 요청을 생성할때 
                 // 요청 request 를 파싱해서 처리
                 let body = '';
@@ -98,8 +95,9 @@ const server = http.createServer(async (req, res) => {
                     const username = formData.name;
                     console.log("사용자 이름은??", username);
 
-                    users[username] = username;
-                    console.log(users);
+                    const id = Date.now();
+                    users[id] = username;
+                    console.log("최종 객체:", users);
                 });
                 // 결과 response 주는 코드  
                 res.writeHead(201, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -108,7 +106,7 @@ const server = http.createServer(async (req, res) => {
         } else if (req.method === 'PUT') {
             // 요청을 수정할때
             // 수정 명령어 : curl -X PUT 127.0.0.1:3000/users/aaa -d "name=bbb"
-            if (req.url.startsWith('/users/')) {
+            if (req.url.startsWith('/user/')) {
                 const key = req.url.split('/')[2];
                 let body = '';
                 req.on('data', (data) => {
@@ -122,12 +120,11 @@ const server = http.createServer(async (req, res) => {
                     users[key] = formData.name;
                 })
             }
-
             // 결과(response=res) 출력 
             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
             res.end("수정 성공");
         } else if (req.method === "DELETE") {
-            if (req.url.startsWith('/users/')) {
+            if (req.url.startsWith('/user/')) {
                 // 요청을 삭제할때
                 // 요청에 대한 파싱
                 // 삭제 명령어 : curl -X DELETE 127.0.0.1:3000/users/aaa
@@ -177,6 +174,8 @@ function getContentType(filePath) {
             return 'application/javascript'; charset = utf - 8;
         case '.jpg':
             return 'image/jpeg';
+        case '.gif':
+            return 'image/gif';
         default:
             return 'application/octet-stream';
     }

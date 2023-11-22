@@ -1,8 +1,14 @@
 {
   "typescript.locale": "ko",
   "cSpell.words": [
+    "autoescape",
+    "Birthdate",
+    "bodyparser",
     "jsminiproject",
+    "mycookie",
     "orderitem",
+    "readcookie",
+    "resave",
     "STOREID",
     "Totwo",
     "USERID",

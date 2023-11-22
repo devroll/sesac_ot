@@ -35,10 +35,6 @@ function readCSV(filePath, callback) {
 
 module.exports = { readCSV };
 
-
-
-
-
 function writeCSV(filePath, dataToWrite, callback) {
     fs.writeFile(filePath, csvContent, 'utf8', (err) => {
         if (err) {
