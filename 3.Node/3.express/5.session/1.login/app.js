@@ -23,8 +23,9 @@ const users = [
 // }
 
 app.post('/login', (req, res) => {
+    // app.get('/login', (req, res) => {
     // const { id, pw } = req.query;
-    const { username, password } = req.query;
+    const { username, password } = req.body;
     console.log(username, password);
 
     // 검색기능...

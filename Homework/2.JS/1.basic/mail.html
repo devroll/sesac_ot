@@ -1,0 +1,17 @@
+mailElements.forEach(mailElement => {
+    // 보낸 사람 메일 주소 추출
+    const senderButton = mailElement.querySelector('.button_sender');
+    
+    // 보낸 사람 메일 주소가 존재하는 경우에만 처리
+    if (senderButton) {
+      const senderEmail = senderButton.getAttribute('title');
+  
+      // 보낸 사람 메일 주소가 ""webex.com""일 경우 체크박스 선택
+      if (senderEmail.includes('webex.com')) {
+        // 체크박스 선택
+        const checkbox = mailElement.querySelector('.button_checkbox_wrap input[type=""checkbox""]');
+        checkbox.checked = true;
+      }
+    }
+  });
+  

@@ -9,6 +9,9 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// 퍼블릭 폴더를 정적 파일 폴더로 설정
+app.use(express.static('public'));
+
 // 세션 미들웨어 설정
 app.use(
     session({
@@ -28,9 +31,6 @@ app.get('/logout', (req, res) => {
         }
     });
 })
-
-// 퍼블릭 폴더를 정적 파일 폴더로 설정
-app.use(express.static('public'));
 
 // 배열 (1차원배열=1-D Array), 두개의 객체(Object)를 담고 있음 
 const users = [
